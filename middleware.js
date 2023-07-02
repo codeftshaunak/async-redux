@@ -1,5 +1,5 @@
-const delaymiddleware = (store)=>(next)=>(action)=>{
-    if(action.type==="todos/addedTodo"){
+const delaymiddleware = (store) => (next) => (action) => {
+    if (action.type === "todos/addedTodo") {
         console.log("I am delaing you");
 
         setTimeout(() => {
@@ -8,5 +8,9 @@ const delaymiddleware = (store)=>(next)=>(action)=>{
 
         return;
     }
-    return next(action)
+    return next(action);
+}
+
+module.exports = {
+    delaymiddleware
 }

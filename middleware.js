@@ -5,6 +5,8 @@ const delaymiddleware = (store)=>(next)=>(action)=>{
         setTimeout(() => {
             next(action);
         }, 2000);
+
+        return;
     }
     return next(action)
 }

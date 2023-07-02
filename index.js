@@ -1,5 +1,5 @@
 const { createStore, applyMiddleware } = require("redux");
-const { delaymiddleware, fetchLoadedMiddleware } = require("./middleware");
+const { delayMiddleware, fetchLoadedMiddleware } = require("./middleware");
 
 
 //initial state
@@ -21,7 +21,7 @@ const todoReducer = (state = initialState, action) => {
                 ]
             };
 
-        case "todos/todoLoaded":
+        case "todos/todosLoaded":
             return {
                 ...state,
                 todos: [...state.todos, ...action.payload]
@@ -33,8 +33,10 @@ const todoReducer = (state = initialState, action) => {
 };
 
 //store
-const store = createStore(todoReducer, applyMiddleware(delaymiddleware, fetchLoadedMiddleware));
-
+const store = createStore(
+    todoReducer,
+    applyMiddleware(delayMiddleware, fetchLoadedMiddleware)
+);
 //subscribe to state manager
 store.subscribe(() => {
     console.log(store.getState());

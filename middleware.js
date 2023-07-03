@@ -15,15 +15,7 @@ const delayMiddleware = (store) => (next) => (action) => {
 
 const fetchLoadedMiddleware = (store) => (next) => async (action) => {
     if (action.type === "todos/fetchLoaded") {
-        const response = await fetch(
-            'https://jsonplaceholder.typicode.com/todos?_limit=6'
-        );
-        const todos = await response.json();
 
-        store.dispatch({
-            type: "todos/todosLoaded", // corrected typo in "type"
-            payload: todos,
-        });
 
         return;
     }
@@ -34,3 +26,4 @@ module.exports = {
     delayMiddleware,
     fetchLoadedMiddleware,
 };
+

@@ -14,10 +14,8 @@ const delayMiddleware = (store) => (next) => (action) => {
 };
 
 const fetchLoadedMiddleware = (store) => (next) => async (action) => {
-    if (action.type === "todos/fetchLoaded") {
-
-
-        return;
+    if (typeof action === "function") {
+        return action(store.dispatch, store.getState)
     }
     return next(action);
 };
